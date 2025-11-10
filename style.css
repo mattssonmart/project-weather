@@ -1,18 +1,34 @@
 body {
-    background:linear-gradient(to right, rgb(16, 54, 70), skyblue);
+    background: skyblue;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .gradiant {
-
+    background:linear-gradient(to right, rgb(16, 54, 70), skyblue);
 }
 
 .swirl {
+  width: 100vw;
+  height: 100vh;
+  background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}    
+
+
+.moving-gradient {
 
 }
 
-.moving-gradient {
-    
+.no.effect {
+    background-color: skyblue;
 }
 
 .header-style {
@@ -29,20 +45,29 @@ body {
     gap: 20px;
 }
 
-
-
-svg {
+/* svg {
     display: block;
     height: 100%;
     width: 100%;
 }
+
+footer {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    overflow: visible;
+    
+}
+
+footer svg {
+    display: block;
+} */
 
 #search-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 75px - 100px);
 }
 
 #search-container {
