@@ -25,8 +25,20 @@ searchEnter.addEventListener('keydown', (event) => {
 
 searchClick.addEventListener('click', searching);
 
-
+// just or learning
  
+const bgSwitch = document.querySelectorAll('span[data-bg]')
+
+bgSwitch.forEach(span =>  {
+    span.addEventListener('click', () => {
+        const className = span.dataset.bg;
+        document.body.className = className;
+        console.log('clicki på', span.dataset.bg);
+    });
+});
+
+
+
 
 
 
