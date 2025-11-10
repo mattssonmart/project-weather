@@ -1,5 +1,4 @@
 import { getWeatherCity } from './services/weatherService.js';
-// import { createWeatherBox } from './components/weatherBox.js';
 // import { MOCK } from '../mock.js';
 
 
