@@ -1,5 +1,5 @@
 import { getWeatherCity } from './services/weatherService.js';
-import { Box } from './components/Box.js';
+import { Box } from './components/box.js';
 
 const searchField = document.getElementById('searchField');
 const searchButton = document.getElementById('searchButton');

@@ -1,17 +1,5 @@
 import { weatherCodes } from '../utils/weatherCodes.js';
 
-// export async function getWeatherCity(city) {
-//     const urlCity = `https://geocoding-api.open-meteo.com/v1/search?name=${city}&language=en&format=json`
-//     const response01 = await fetch(urlCity);
-//     if (!response01.ok) throw new Error("kunde inte hämta kordinater");
-//     const data = await response01.json();
-
-//     const response02 = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${data.results[0].latitude}&longitude=${data.results[0].longitude}&current_weather=true`);
-//     if (!response02.ok) throw new Error("Kunde inte hämta väderdata");
-//     const data2 = await response02.json();
-//     }
-
-
 export async function getWeatherCity(city) {
 
     const urlCity = `https://geocoding-api.open-meteo.com/v1/search?name=${city}&language=en&format=json`;
