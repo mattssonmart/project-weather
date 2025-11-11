@@ -1,4 +1,5 @@
 import { getWeatherCity } from './services/weatherService.js';
+import { createWeatherBox } from './components/weatherBox.js';
 // import { MOCK } from '../mock.js';
 
 
@@ -14,6 +15,8 @@ async function searching() {
       searchEnter.value = '';
       const weather = await getWeatherCity(searchCity);
       console.log("hittade", weather);
+      const box = await createWeatherBox(weather)
+      document.body.appendChild(box);
       displayText.innerHTML = `Just nu i ${weather.city} är ${weather.weather} det  med en temperatur på ${weather.temp} °C`;
 };
 
