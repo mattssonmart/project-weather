@@ -19,7 +19,7 @@ async function searching() {
     //   const box = createWeatherBox(weather)
     //   document.body.appendChild(box);
       const newBox = new Box(weather);
-      document.body.appendChild(newBox.element);
+      document.body..appendChild(newBox.element);
 
       displayText.innerHTML = `Just nu i ${weather.city} är ${weather.weather} det  med en temperatur på ${weather.temp} °C`;
 };
