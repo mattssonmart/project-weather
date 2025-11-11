@@ -27,6 +27,10 @@ body {
 
 }
 
+.weather-box {
+    border: solid red 2px;
+}
+
 .no.effect {
     background-color: skyblue;
 }
@@ -62,6 +66,15 @@ footer {
 footer svg {
     display: block;
 } */
+
+.box-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    height: 200px;
+    border: solid gold 2px;
+}
 
 #search-section {
     display: flex;
