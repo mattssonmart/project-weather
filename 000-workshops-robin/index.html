@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tillgänglig meny med ARIA</title>
+<style>
+        body { font-family: sans-serif; margin: 2rem;}
+
+        button {list-style-type: none; margin: 1rem 0 0 0; padding: 0;}
+
+        a { text-decoration: none; color: #000000;}
+
+        #menuList {display: none;}
+        #menuList.show {display: block;}
+    </style>
+
+    <script defe>
+        document.addEventListener("DOMContentLoaded", ()=>{
+            const menu = document.getElementById("menuList");
+            const button = document.getElementById("menuButton");
+
+            button.addEventListener("click", () => {
+                menu.classList.toggle("show");
+            })
+        });
+    </script>
+
+</head>
+
+<body>
+    <button id="menuButton"> menu </button>
+
+    <ul id="menuList">
+        <li>Start</li>
+        <li>Tjänster</li>
+        <li>om oss</li>
+        <li>Kontakt</li>
+    </ul>
+
+    
+</body>
+</html>

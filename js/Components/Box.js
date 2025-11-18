@@ -6,8 +6,8 @@ export class Box {
         this.element.innerHTML = `
         <h2>Väder just nu</h2>
         <p>Temperatur: ${weather.temp} °C</p>
-        <p>Väder: ${weather.weather} °C</p>
-        <p>Stad: ${weather.city} °C</p>
+        <p>Väder: ${weather.weather} </p>
+        <p>Stad: ${weather.city} </p>
         `;
     }
 }
