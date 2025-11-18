@@ -1,15 +1,18 @@
-import { getWeather } from './services/weatherService.js';
+import { GetWeather } from './services/weatherService.js';
 import { Box } from './components/box.js';
-// import { getWeather } from '../test.js';
+import { Filter } from './utils/filter.js';
 
 const searchField = document.getElementById('searchField');
 const searchButton = document.getElementById('searchButton');
-const weatherService = new getWeather();
+const filter = new Filter();
+const weatherService = new GetWeather(filter);
+
 
 async function searching() {
     let city = searchField.value;
     searchField.value = '';
     const weather = await weatherService.getWeatherCity(city);
+    if (!weather) return;
     const newBox = new Box(weather);
     document.body.appendChild(newBox.element);
 }
