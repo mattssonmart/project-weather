@@ -14,7 +14,8 @@ async function searching() {
     const weather = await weatherService.getWeatherCity(city);
     if (!weather) return;
     const newBox = new Box(weather);
-    document.body.appendChild(newBox.element);
+    const weatherBox = document.getElementById('weather-container');
+    weatherBox.appendChild(newBox.element);
 }
 
 searchField.addEventListener('keydown', (event) => {
@@ -25,6 +26,24 @@ searchField.addEventListener('keydown', (event) => {
 
 searchButton.addEventListener('click', searching);
 
+document.addEventListener("saveBox", (event) => {
+    const weather = event.detail;
+    localStorage.setItem("savedWeather", JSON.stringify(weather));
 
-    
+    const savedDiv = document.getElementById("saved");
+    savedDiv.innerHTML = `
+        <p>Stad: ${weather.city}</p>
+        <p>Väder: ${weather.weather}</p>
+        <p>Temperatur: ${weather.temp} °C</p>
+    `;
+});
 
+const saved = JSON.parse(localStorage.getItem("savedWeather"));
+if (saved) {
+    const savedDiv = document.getElementById("saved");
+    savedDiv.innerHTML = `
+        <p>Stad: ${saved.city}</p>
+        <p>Väder: ${saved.weather}</p>
+        <p>Temperatur: ${saved.temp} °C</p>
+    `;
+}
