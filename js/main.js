@@ -47,7 +47,7 @@ document.addEventListener("saveBox", (event) => {
     const savedDiv = document.getElementById("saved");
     savedDiv.innerHTML = `
         <p>Stad: ${weather.city}</p>
-        <p>Väder: ${weatherCodes[weather.current_weather.weathercode]}</p>
+        <p>Väder: ${weatherCodes[weather.current_weather.weathercode].description}</p>
         <p>Temperatur: ${weather.current_weather.temperature} °C</p>
     `;
 });

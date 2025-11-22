@@ -23,6 +23,8 @@ export class Box {
     }
 
     render() {
+        const background =this.weather.current_weather.weathercode;
+        this.element.style.backgroundImage =  `url("${weatherCodes[code].image}")`;
         this.element.innerHTML = `
             <p>Stad: ${this.weather.city}</p>
             <p>Väder: ${weatherCodes[this.weather.current_weather.weathercode]}</p>
