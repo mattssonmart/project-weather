@@ -1,5 +1,5 @@
 import { weatherCodes } from '../utils/weatherCodes.js';
-import { UpdateWeatherData } from '../services/updateWeatherData.js';
+import { UpdateWeatherData } from '../services/updateweatherdata.js';
 
 export class Box {
     constructor(weather, filter) {

@@ -2,7 +2,7 @@ import { GetWeather } from './services/weatherService.js';
 import { Box } from './components/box.js';
 import { Filter } from './utils/filter.js';
 import { weatherCodes } from './utils/weatherCodes.js';
-import { UpdateWeatherData } from './services/updateweatherdata.js';
+
 
 const searchField = document.getElementById('searchField');
 const searchButton = document.getElementById('searchButton');
