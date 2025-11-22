@@ -2,6 +2,7 @@ import { GetWeather } from './services/weatherService.js';
 import { Box } from './components/box.js';
 import { Filter } from './utils/filter.js';
 import { weatherCodes } from './utils/weatherCodes.js';
+import { UpdateWeatherData } from './services/updateWeatherData.js';
 
 const searchField = document.getElementById('searchField');
 const searchButton = document.getElementById('searchButton');
@@ -22,7 +23,7 @@ async function searching() {
     try {
         const weather = await weatherService.getWeatherCity(city);
         if (!weather) return;
-        const newBox = new Box(weather, filter);
+        const newBox = new Box(weather, filter, false);
         const weatherBox = document.getElementById('weather-container');
         weatherBox.appendChild(newBox.element);
         cities.add(city);
@@ -50,12 +51,28 @@ document.addEventListener("saveBox", (event) => {
         <p>Väder: ${weatherCodes[weather.current_weather.weathercode].description}</p>
         <p>Temperatur: ${weather.current_weather.temperature} °C</p>
     `;
+    const code = weather.current_weather.weathercode;
+    const bgImage = weatherCodes[code]?.image || "images/sunny.jpg";
+    document.body.style.backgroundImage = `url("${bgImage}")`;
+    document.body.style.backgroundSize = "cover";
+
 });
 
 const saved = JSON.parse(localStorage.getItem("savedWeather"));
 if (saved) {
     const weatherBox = document.getElementById("weather-container");
-    const savedBox = new Box(saved, filter);
+    const savedBox = new Box(saved, filter, true);
     weatherBox.appendChild(savedBox.element);
     cities.add(saved.city);
+
+    const code = saved.current_weather.weathercode;
+    const bgImage = weatherCodes[code]?.image || "images/sunny.jpg";
+    document.body.style.backgroundImage = `url("${bgImage}")`;
+    document.body.style.backgroundSize = "cover";
+} 
+    else {
+    document.body.style.backgroundImage = `url("images/sunny.jpg")`;
+    document.body.style.backgroundSize = "cover";
 }
+
+

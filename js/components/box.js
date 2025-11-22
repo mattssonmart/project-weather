@@ -23,11 +23,11 @@ export class Box {
     }
 
     render() {
-        const background =this.weather.current_weather.weathercode;
-        this.element.style.backgroundImage =  `url("${weatherCodes[code].image}")`;
+        const code = this.weather.current_weather.weathercode;
+
         this.element.innerHTML = `
             <p>Stad: ${this.weather.city}</p>
-            <p>Väder: ${weatherCodes[this.weather.current_weather.weathercode]}</p>
+            <p>Väder: ${weatherCodes[code] ? weatherCodes[code].description : 'Okänt'}</p>
             <p>Temperatur: ${this.weather.current_weather.temperature} °C</p>
         `;
     }
@@ -47,7 +47,7 @@ export class Box {
                 this.render();
             }
         } catch (err) {
-            console.error("Failed to update weather for", this.weather.city, err);
+            console.error("kunde inte uppdatera väder", this.weather.city, err);
         }
     }
 }
