@@ -1,4 +1,3 @@
-// import { weatherCodes } from '../utils/weatherCodes.js';
 import { cityToCoordinatesUrl, cordsTemperatureURL } from '../utils/urls.js'
 
 export class GetWeather {

@@ -7,16 +7,29 @@ const searchField = document.getElementById('searchField');
 const searchButton = document.getElementById('searchButton');
 const filter = new Filter();
 const weatherService = new GetWeather(filter);
+const cities = new Set();
 
 
 async function searching() {
-    let city = searchField.value;
+    let city = searchField.value.trim();
     searchField.value = '';
-    const weather = await weatherService.getWeatherCity(city);
-    if (!weather) return;
-    const newBox = new Box(weather);
-    const weatherBox = document.getElementById('weather-container');
-    weatherBox.appendChild(newBox.element);
+
+    if (cities.has(city)) {
+        alert(`${city} finns redan`)
+        return;
+    }
+
+    try {
+        const weather = await weatherService.getWeatherCity(city);
+        if (!weather) return;
+        const newBox = new Box(weather, filter);
+        const weatherBox = document.getElementById('weather-container');
+        weatherBox.appendChild(newBox.element);
+        cities.add(city);
+    }
+    catch (err) {
+        alert(`Kunde inte hitta staden`);
+    }
 }
 
 searchField.addEventListener('keydown', (event) => {
@@ -41,10 +54,8 @@ document.addEventListener("saveBox", (event) => {
 
 const saved = JSON.parse(localStorage.getItem("savedWeather"));
 if (saved) {
-    const savedDiv = document.getElementById("saved");
-    savedDiv.innerHTML = `
-        <p>Stad: ${saved.city}</p>
-        <p>Väder: ${weatherCodes[saved.current_weather.weathercode]}</p>
-        <p>Temperatur: ${saved.current_weather.temperature} °C</p>
-    `;
+    const weatherBox = document.getElementById("weather-container");
+    const savedBox = new Box(saved, filter);
+    weatherBox.appendChild(savedBox.element);
+    cities.add(saved.city);
 }
