@@ -1,6 +1,7 @@
 import { GetWeather } from './services/weatherService.js';
 import { Box } from './components/box.js';
 import { Filter } from './utils/filter.js';
+import { weatherCodes } from './utils/weatherCodes.js';
 
 const searchField = document.getElementById('searchField');
 const searchButton = document.getElementById('searchButton');
@@ -33,8 +34,8 @@ document.addEventListener("saveBox", (event) => {
     const savedDiv = document.getElementById("saved");
     savedDiv.innerHTML = `
         <p>Stad: ${weather.city}</p>
-        <p>Väder: ${weather.weather}</p>
-        <p>Temperatur: ${weather.temp} °C</p>
+        <p>Väder: ${weatherCodes[weather.current_weather.weathercode]}</p>
+        <p>Temperatur: ${weather.current_weather.temperature} °C</p>
     `;
 });
 
@@ -43,7 +44,7 @@ if (saved) {
     const savedDiv = document.getElementById("saved");
     savedDiv.innerHTML = `
         <p>Stad: ${saved.city}</p>
-        <p>Väder: ${saved.weather}</p>
-        <p>Temperatur: ${saved.temp} °C</p>
+        <p>Väder: ${weatherCodes[saved.current_weather.weathercode]}</p>
+        <p>Temperatur: ${saved.current_weather.temperature} °C</p>
     `;
 }

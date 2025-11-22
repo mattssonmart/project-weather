@@ -1,4 +1,4 @@
-import { weatherCodes } from '../utils/weatherCodes.js';
+// import { weatherCodes } from '../utils/weatherCodes.js';
 import { cityToCoordinatesUrl, cordsTemperatureURL } from '../utils/urls.js'
 
 export class GetWeather {
@@ -23,15 +23,9 @@ export class GetWeather {
 
     response = await fetch(urlCord);
     if (!response.ok) throw new Error("Kunde inte hämta väderdata");
-    const dataWeather = await response.json();
+    const weatherData = await response.json();
+    weatherData.city = city;
 
-    const weatherData = {
-        city: city,
-        temp: dataWeather.current_weather.temperature,
-        weather: weatherCodes[dataWeather.current_weather.weathercode],
-        time: dataWeather.current_weather.time,
-        timeZone: dataWeather.timezone }
-
-        return weatherData
+    return weatherData
     }
 }
