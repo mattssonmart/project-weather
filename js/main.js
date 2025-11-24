@@ -67,7 +67,7 @@ if (saved) {
     cities.add(saved.city);
     
     const saveDiv = document.getElementById("saved");
-    saveDiv.style.visibility = "visible"
+    savedDiv.style.visibility = "visible"
 
 
     const code = saved.current_weather.weathercode;
