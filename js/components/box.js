@@ -9,6 +9,17 @@ export class Box {
 
         this.element = document.createElement('div');
         this.element.className = 'box-style';
+
+
+        const city = this.weather.city;
+        const code = this.weather.current_weather.weathercode;
+        const description = weatherCodes[code]?.description || 'okänt';
+        const temp = this.weather.current_weather.temperature;
+        this.element.setAttribute('role', 'group');
+        this.element.tabIndex = 0;
+        this.element.setAttribute(
+            'aria-label', `I ${city} är det ${temp} grader och ${description.toLowerCase()}`
+        );
         this.render();
 
         this.element.addEventListener("dblclick", () => {
@@ -26,9 +37,11 @@ export class Box {
         const code = this.weather.current_weather.weathercode;
 
         this.element.innerHTML = `
-            <p>Stad: ${this.weather.city}</p>
-            <p>Väder: ${weatherCodes[code] ? weatherCodes[code].description : 'Okänt'}</p>
-            <p>Temperatur: ${this.weather.current_weather.temperature} °C</p>
+            <div aria-hidden="true">
+                <p>Stad: ${this.weather.city}</p>
+                <p>Väder: ${weatherCodes[code] ? weatherCodes[code].description : 'Okänt'}</p>
+                <p>Temperatur: ${this.weather.current_weather.temperature} °C</p>
+            </div>
         `;
     }
 
