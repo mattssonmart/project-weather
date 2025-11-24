@@ -46,15 +46,14 @@ document.addEventListener("saveBox", (event) => {
     localStorage.setItem("savedWeather", JSON.stringify(weather));
 
     const savedDiv = document.getElementById("saved");
-    savedDiv.innerHTML = `
-        <p>Stad: ${weather.city}</p>
-        <p>Väder: ${weatherCodes[weather.current_weather.weathercode].description}</p>
-        <p>Temperatur: ${weather.current_weather.temperature} °C</p>
-    `;
+    savedDiv.innerHTML = "";
+    const savedBox = new Box(weather, filter, true);
+    savedDiv.appendChild(savedBox.element);
     savedDiv.style.visibility = "visible";
+
     const code = weather.current_weather.weathercode;
-    const bgImage = weatherCodes[code]?.image || "images/sunny.jpg";
-    document.body.style.backgroundImage = `url("${bgImage}")`;
+    const backgroundgImage = weatherCodes[code]?.image || "images/sunny.jpg";
+    document.body.style.backgroundImage = `url("${backgroundgImage}")`;
     document.body.style.backgroundSize = "cover";
 
 });
@@ -64,10 +63,11 @@ if (saved) {
     const weatherBox = document.getElementById("weather-container");
     const savedBox = new Box(saved, filter, true);
     weatherBox.appendChild(savedBox.element);
-    cities.add(saved.city);
-    
+    // cities.add(saved.city);
     const savedDiv = document.getElementById("saved");
-    savedDiv.style.visibility = "visible"
+    savedDiv.innerHTML = "";
+    savedDiv.appendChild(savedBox.element);
+    savedDiv.style.visibility = "visible";
 
 
     const code = saved.current_weather.weathercode;

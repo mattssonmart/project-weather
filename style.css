@@ -32,24 +32,33 @@ body {
     border-radius: 10px;
 }
 
-#weather-container {
+.container-size {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    justify-content: center;
     width: 660px;
+    padding: 0;
 }
 
 .box-style {
-    background: white;
+    width: 250px;
+    height: 150px;
     padding: 20px;
+    box-sizing: border-box;
+    background: white;
     border-radius: 10px;
     text-align: center;
 }
 
 #saved {
-    background: white;
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
-    text-align: center;
+    background: white;
     visibility: hidden;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0;
 }
