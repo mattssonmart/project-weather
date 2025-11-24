@@ -16,19 +16,21 @@ async function searching() {
     searchField.value = '';
 
     if (cities.has(city)) {
-        alert(`${city} finns redan`)
+        alert(`${city} finns redan`) 
+        // bygga ruta med class & html
         return;
     }
 
     try {
         const weather = await weatherService.getWeatherCity(city);
         if (!weather) return;
-        const newBox = new Box(weather, filter, false);
+        const newBox = new Box(weather, filter);
         const weatherBox = document.getElementById('weather-container');
         weatherBox.appendChild(newBox.element);
         cities.add(city);
     }
-    catch (err) {
+    catch (fel) {
+        // bygga ruta med class & html
         alert(`Kunde inte hitta staden`);
     }
 }
@@ -47,7 +49,7 @@ document.addEventListener("saveBox", (event) => {
 
     const savedDiv = document.getElementById("saved");
     savedDiv.innerHTML = "";
-    const savedBox = new Box(weather, filter, true);
+    const savedBox = new Box(weather, filter);
     savedDiv.appendChild(savedBox.element);
     savedDiv.style.visibility = "visible";
 
