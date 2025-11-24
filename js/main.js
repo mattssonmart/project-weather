@@ -64,7 +64,7 @@ if (saved) {
     const savedBox = new Box(saved, filter, true);
     savedBox.updateWeather();
     weatherBox.appendChild(savedBox.element);
-    // cities.add(saved.city); bugg
+    // cities.add(saved.city); bugg, kan inte söka efter något i local storage.
     const savedDiv = document.getElementById("saved");
     savedDiv.innerHTML = "";
     savedDiv.appendChild(savedBox.element);

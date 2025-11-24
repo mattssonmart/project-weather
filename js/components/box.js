@@ -6,7 +6,6 @@ export class Box {
         this.weather = weather;
         this.filter = filter;
         this.updater = new UpdateWeatherData(this.filter);
-
         this.element = document.createElement('div');
         this.element.className = 'box-style';
 
@@ -26,6 +25,16 @@ export class Box {
             document.dispatchEvent(new CustomEvent("saveBox", {
                 detail: this.weather
             }));
+        });
+
+        this.element.addEventListener('keydown', (event) => {
+            console.log(event.target);
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                document.dispatchEvent(new CustomEvent("saveBox",{
+                    detail: this.weather
+                }));
+            }           
         });
 
         this.interval = setInterval(() => {
