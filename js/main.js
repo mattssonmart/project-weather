@@ -66,7 +66,7 @@ if (saved) {
     weatherBox.appendChild(savedBox.element);
     cities.add(saved.city);
     
-    const saveDiv = document.getElementById("saved");
+    const savedDiv = document.getElementById("saved");
     savedDiv.style.visibility = "visible"
 
 
