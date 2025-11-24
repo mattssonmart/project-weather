@@ -51,6 +51,7 @@ document.addEventListener("saveBox", (event) => {
         <p>Väder: ${weatherCodes[weather.current_weather.weathercode].description}</p>
         <p>Temperatur: ${weather.current_weather.temperature} °C</p>
     `;
+    savedDiv.style.visibility = "visible";
     const code = weather.current_weather.weathercode;
     const bgImage = weatherCodes[code]?.image || "images/sunny.jpg";
     document.body.style.backgroundImage = `url("${bgImage}")`;
@@ -64,6 +65,10 @@ if (saved) {
     const savedBox = new Box(saved, filter, true);
     weatherBox.appendChild(savedBox.element);
     cities.add(saved.city);
+    
+    const saveDiv = document.getElementById("saved");
+    saveDiv.style.visibility = "visible"
+
 
     const code = saved.current_weather.weathercode;
     const bgImage = weatherCodes[code]?.image || "images/sunny.jpg";
