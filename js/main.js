@@ -62,8 +62,9 @@ const saved = JSON.parse(localStorage.getItem("savedWeather"));
 if (saved) {
     const weatherBox = document.getElementById("weather-container");
     const savedBox = new Box(saved, filter, true);
+    savedBox.updateWeather();
     weatherBox.appendChild(savedBox.element);
-    // cities.add(saved.city);
+    // cities.add(saved.city); bugg
     const savedDiv = document.getElementById("saved");
     savedDiv.innerHTML = "";
     savedDiv.appendChild(savedBox.element);
